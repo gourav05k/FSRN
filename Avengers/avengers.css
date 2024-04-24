@@ -59,15 +59,17 @@ header span{
     font-size: xx-large;
     font-style: italic;
 }
-.home .content button{
+.btn{
     color: white;
-    background-color: red;
+    background-color: rgb(236, 75, 75);
     border-radius: 8px;
     padding: 15px;
+    /* opacity: 0.6; */
 }
 
-button:hover {
-    opacity: 0.6;
+.btn:hover {
+    /* opacity: 1; */
+    background-color:rgb(250, 7, 7);
     cursor: pointer;
 }
 
@@ -152,12 +154,9 @@ h1{
     display: flex;
     gap: 20px;
 }
+
 .contact .form .buttons button{
-    color: white;
-    background-color: red;
     width: 100%;
-    border-radius: 8px;
-    padding: 10px;
 }
 
 
