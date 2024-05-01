@@ -1,0 +1,163 @@
+
+*{
+    margin: 0;
+    transition: 0.3s;
+}
+
+body{
+    background-color: black;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    font-size: x-large;
+    align-items: center;
+    color: white;
+    margin: 20px;
+    padding: 10px;
+   
+}
+
+header a{
+    margin: 10px;
+    color: white;
+    position: relative;
+    z-index: 1;
+    font-style: italic;
+}
+a:hover{
+    background-color: #d92b2b;
+    border-radius: 8px;
+}
+
+header span{
+    z-index: 1;
+    color: red;
+}
+
+.home{
+    position: relative;
+}
+
+.home img{
+    top: -87px; 
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-bottom: -90px;
+}
+
+.home .content {
+    color: white;
+    text-align: center;
+    z-index: 1;
+    position: absolute;
+    top: 40vh;
+    left:50vw;
+    transform: translate(-50%, -50%);
+    font-size: xx-large;
+    font-style: italic;
+}
+.btn{
+    color: white;
+    background-color: rgb(236, 75, 75);
+    border-radius: 8px;
+    padding: 15px;
+    /* opacity: 0.6; */
+}
+
+.btn:hover {
+    /* opacity: 1; */
+    background-color:rgb(250, 7, 7);
+    cursor: pointer;
+}
+
+.about{
+    justify-content:center;
+}
+
+h1{
+    color: red;
+    font-size: xx-large;
+    text-align: center;
+    padding: 20px;
+    margin: 20px;
+}
+
+.about .row{
+    display: flex;
+    margin: 20px;
+}
+
+.about .row img{
+    width: 50%;
+}
+
+.about .row .content{
+    text-align: center;
+    color: black;
+    background-color: white;
+    padding: 30px;
+}
+
+.gallery{
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+
+}
+
+.gallery img{
+    width: 100%;
+    height: 100%;
+}
+
+.team{
+    display: flex;
+    object-fit: scale-down;
+    margin: 20px;
+}
+
+.team img{
+    color: white;
+    width: 50vw;
+    height: 40vh;
+}
+
+.contact{
+    display: flex;
+    justify-content: space-evenly;
+    align-items:center;
+    margin: 40px;
+}
+
+.contact img{
+    width: 50%;
+}
+
+.contact .form input{
+    width: 100%;
+    color: white;
+    background-color: black;
+}
+
+.contact .form textarea{
+    width: 100%;
+    color: white;
+    background-color: black;
+}
+
+.contact .form .buttons{
+    display: flex;
+    gap: 20px;
+}
+
+.contact .form .buttons button{
+    width: 100%;
+}
+
+
+
