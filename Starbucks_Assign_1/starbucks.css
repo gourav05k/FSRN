@@ -110,8 +110,9 @@ body{
     color: black;
     background-color: #d4e9e2;
     text-align: center;
-    padding: 15px;
-    padding: 32px;
+    /* padding: 15px; */
+    padding-left: 100px;
+    padding-right: 100px;
 }
 
 .btn{
