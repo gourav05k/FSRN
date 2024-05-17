@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Doer List</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- create a container for the todo list -->
+    <div id="doer-container">
+        <!-- header -->
+        <div id="header">
+            <h1>Doers' List</h1>
+        </div>
+        
+        <!-- create input box -->
+        <div id="doer-form">
+            <input type="text" class="input-item" name="input_box" id="input-box" placeholder="Buy Groceries" />
+
+            <!-- add button -->
+            <button type="button" id="input-button" onclick="addTask()">Add</button>
+        </div>
+
+        <!-- task list -->
+        <h2>Task List</h2>
+        <ul id="list-container"></ul>
+    </div>
+
+    <hr />
+    <!-- task counter -->
+    <div class="counter">
+        <h4>Completed Tasks: <span id="completed-tasks">0</span></h4>
+        <h4>Pending Tasks: <span id="pending-tasks">0</span></h4>
+    </div>
+
+    <script src="app.js"></script>
+    
+</body>
+
+</html>
