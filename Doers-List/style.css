@@ -1,16 +1,16 @@
 body { 
   background: rgb(0,0,0);
-  background: radial-gradient(circle, rgba(197, 174, 174, 0.028) 0%, rgb(96, 181, 194) 100%);
+  background: radial-gradient(circle, rgba(197, 174, 174, 0.028) 0%, rgb(6, 175, 54) 100%);
   font-family: Arial, sans-serif;
   text-align: center;
   margin-top: 50px;
 }
 
 #doer-container {
-  background: rgb(208, 53, 53);
+  background: rgb(0, 0, 0);
   width: 400px;
   margin: 0 auto;
-  border: 2px solid #0033ff;
+  /* border: 2px solid #000000; */
   padding: 20px;
   color: white;
   border-radius: 15px;
@@ -42,11 +42,11 @@ h1 {
   padding: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #2e60ea;
+  background-color: #00f742;
 }
 
 #input-button:hover {
-  background-color: #9eb7fd; 
+  background-color: #45ee80; 
 }
 
 
@@ -68,7 +68,7 @@ margin-top: 10px;
 
 .edit-btn, .delete-btn {
   float: right;
-  color:crimson;
+  color:rgb(250, 249, 249);
   cursor: pointer;
   margin: 3px 5px;
   border: none;
