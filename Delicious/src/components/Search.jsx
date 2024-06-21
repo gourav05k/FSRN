@@ -1,4 +1,4 @@
-import './Search.css'
+// import './Search.css'
 import { restaurant_details } from '../utils/mockData';
 import { useState } from 'react';
 
@@ -13,8 +13,8 @@ function Search(props) {
 
     return (
         <>
-            <div className="search">
-                <input className="searchBar" type="text" name="searchBar" id="searchBar" onChange={e => {
+            <div className="flex gap-2">
+                <input className="border border-solid border-black" type="text" name="searchBar" id="searchBar" onChange={e => {
                     updateSearchText(e.target.value);
                 }
                 } />

@@ -1,4 +1,38 @@
 export const baseImageUrl = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660";
+export const menuImageBaseUrl  = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/";
+
+export const restaurantMenuItems  = [
+    {   id: 1,
+        imageId: "c1a087a3abb2e0be46c14243db89b308",
+        name: "Tandoori Paneer",
+        price: 299,
+        rating: "4.3",
+        details: "Tandoori Paneer, Onion, Capsicum",
+    },
+    {   id: 2,
+        imageId: "vk0lwrqhjgfrtcymjlvj",
+        name: "Stuffed Garlic Bread",
+        price: 219,
+        rating: "4.1",
+        details: "Corn, Jalepino, Olives",
+    },
+    {   
+        id: 3,
+        imageId: "eeee3bc79f86cb2cf5e95eaeba40919a",
+        name: "Peri Peri",
+        price: 79,
+        rating: "4.6",
+        details: "",
+    },
+    {
+        id: 4,
+        imageId: "81ababd0cd0232b5613425d418c3eb49",
+        name: "Jumbo Grilled",
+        price: 250,
+        rating: "4.2",
+        details: "3 Layer Bread, Onion, Potato, Capsicum, Corn, Cheese",
+    },
+]
 
 export const restaurant_details = [
     {

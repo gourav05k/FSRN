@@ -36,21 +36,20 @@ export function login(req, res) {
 
     const { email, password } = req.body;
 
-
     userModel.findOne({ email }).then(userData => {
         if (!userData) {
-            res.status(401).json({ message: "Not a registered user." });
+            return res.status(401).send({ message: "Not a registered user." });
         }
         // check if pasword is correct. compare plain text password with hash pasword from the DB.
         const isValidPassword = bcrypt.compareSync(password, userData.password);
 
         if (!isValidPassword) {
-            res.status(400).json({ message: "Invalid email or password" });
+            return res.status(400).send({ message: "Invalid email or password" });
         }
         // using user id to generate unique token for each user.
         let token = jwt.sign({ id: userData._id }, 'secretKey', { expiresIn: '1h' });
 
-        res.status(200).json({
+        return res.status(200).json({
             user: {
                 email: userData.email,
                 password: userData.password,
@@ -58,6 +57,7 @@ export function login(req, res) {
             accessToken: token
         });
     }).catch(err => {
-        res.status(500).json({ message: err.message || "Something went wrong" });
+       res.status(500).send({ message: err.message});
+    //    return res.status(500).end({ message: err.message || "Something went wrong" });
     })
 }

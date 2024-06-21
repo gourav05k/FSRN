@@ -1,4 +1,4 @@
-import './Body.css'
+// import './Body.css'
 import Restaurantcard from './RestaurantCard'
 import { restaurant_details } from '../utils/mockData'
 import TopRatedRestaurants from './TopRatedRestaurant'
@@ -30,10 +30,23 @@ function Body() {
         // console.log('filter top');
     }
 
-    function FastDeliveringRestaurants(){
+    function FastDeliveringRestaurants() {
         // console.log("inside fastRestaurants");
         setIsFastDelivery(true);
-    } 
+    }
+
+    useEffect(() => {
+        console.log("fetch restaurants useEffect called");
+        fetch('http://localhost:5100/api/restaurants', {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `JWT ${sessionStorage.getItem("accessToken")}`
+            }
+        }).then(response => response.json())
+        .then(data => console.log("data:", data));
+    }, [])
+    
 
     /**
      * if search text updated, find restourants based on updated search
@@ -47,32 +60,32 @@ function Body() {
             // console.log("yes top");
             searchRestaurants = searchRestaurants.filter(res => parseFloat(res.rating) > 4.1);
         }
-        if(isFastDelivery){
-            searchRestaurants = searchRestaurants.filter(res => Number(res.deliveryTime.slice(0,2)) < 30);
+        if (isFastDelivery) {
+            searchRestaurants = searchRestaurants.filter(res => Number(res.deliveryTime.slice(0, 2)) < 30);
         }
         setFilteredRestaurants(searchRestaurants);
         // console.log("filtered Restaurants: ", filteredRestaurants);
     }, [searchText, isTopRated, isFastDelivery])
-    
+
     // console.log("completed")
 
-    const {userName, setUserName} = useContext(myuserContext);
+    const { userName, setUserName } = useContext(myuserContext);
 
     return (
         <>
-            <div className='filters'>
+            <div className='flex gap-2 justify-start m-4'>
                 <Search SearchRestaurants={SearchRestaurants} />
                 <TopRatedRestaurants filterTopRestaurants={FilterTopRestaurants} />
-                <FastDelivery fastRestaurants={FastDeliveringRestaurants}/>
-                <span><input type="text" value={userName} onChange={e => setUserName(e.target.value)}/></span>
+                <FastDelivery fastRestaurants={FastDeliveringRestaurants} />
+                <span><input type="text" value={userName} onChange={e => setUserName(e.target.value)} /></span>
             </div>
 
-            <div className='restaurant-cards'>
+            <div className='grid grid-cols-4 justify-items-center'>
                 {filteredRestaurants.map((res) =>
-                <Link to={"/restaurant/"+res.id} key={res.id}>
-                    <Restaurantcard key={res.id} restaurant={res} />
-                </Link>
-                // above link is used to add link to each card to its restaurnt details page /restaurant/:res.id
+                    <Link to={"/restaurant/" + res.id} key={res.id}>
+                        <Restaurantcard key={res.id} restaurant={res} />
+                    </Link>
+                    // above link is used to add link to each card to its restaurnt details page /restaurant/:res.id
                 )}
             </div>
         </>

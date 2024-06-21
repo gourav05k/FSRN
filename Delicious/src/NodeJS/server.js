@@ -3,10 +3,11 @@ import mongoose from "mongoose";
 import {routes} from './routes/restaurants.routes.js'
 import {userRoutes} from "./routes/users.routes.js";
 import verifyToken from "./middleware/verifyToken.js";
-
+import cors from "cors";
 //create application server
 const app = express();
 
+app.use(cors()); // middleware to enable cross origin
 // built in middleware for JSON Parsing
 app.use(express.json());
 
@@ -17,7 +18,7 @@ app.listen("5100", () => {
 // pass app to the routes to add routes
 
 // app level middleware
-app.use(authUser);
+// app.use(authUser);
 
 routes(app);
 userRoutes(app);

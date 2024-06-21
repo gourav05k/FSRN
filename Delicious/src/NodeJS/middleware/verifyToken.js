@@ -15,11 +15,11 @@ function verifyToken(req, res, next) {
             if (err) {
                 res.status(401).json({ message: err.message || "Invalid token" });
             }
-            console.log("verified Token payload: ", verifiedTokenPayload);    //this will be payload containing id using which token was generated along with issue time and expire time.
+            // console.log("verified Token payload: ", verifiedTokenPayload);    //this will be payload containing id using which token was generated along with issue time and expire time.
             // find the user with the id from the token
             userModel.findById(verifiedTokenPayload.id)
                 .then(user => {
-                    console.log("user: ", user);
+                    // console.log("user: ", user);
                     // to add the user details to request (if required).
                     req.user = user;
                     next();
@@ -29,7 +29,8 @@ function verifyToken(req, res, next) {
         });
     }
     else {
-        res.status(500).json({ message: "Internal Server Error" });
+        console.log("no token present");
+        res.status(500).json({ message: err.message});
     }
 
 }
