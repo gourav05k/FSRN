@@ -9,6 +9,7 @@ import RestaurantDetails from './components/RestaurantDetails.jsx'
 import ParentAbout from './components/ParentAbout.jsx'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Memo from './components/Memo.jsx'
+import Login from './components/Login.jsx'
 
 const appRouter = createBrowserRouter([
     {
@@ -21,17 +22,26 @@ const appRouter = createBrowserRouter([
                 element:<Body/>
             },
             {
+                path:'/search',
+                element:<Body/>
+            },
+            {
+                path:'/offers',
+                element:<Body/>
+            },
+            {
+                path:'/help',
+                element:<Body/>
+            },
+            {
                 path:'/cart',
                 element:<Cart/>
             },
             {
-                path:'/help',
-                element:<Cart/>
+                path:'/login',
+                element:<Login/>
             },
-            {
-                path:'/offers',
-                element:<Cart/>
-            },
+
             {
                 // dynamic routing
                 path:'/restaurant/:resId',

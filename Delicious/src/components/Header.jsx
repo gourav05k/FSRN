@@ -5,7 +5,6 @@ import { FaSearch } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import myuserContext from '../utils/myuserContext'
-import Login from './Login';
 
 function Header() {
 
@@ -22,13 +21,10 @@ function Header() {
                     <li><Link to="/offers">Offer</Link></li>
                     <li><Link to="/help">Help</Link></li>
                     <li><Link to="/cart">Cart</Link></li>
-                    {/* <li><Link to="/cart">Signed as: {userName}</Link></li> */}
+                    <li><Link to="/login">Sign In</Link></li>
                 </ul>
 
             </div>
-            <Login>
-                Login
-            </Login>
         </>
     )
 }

@@ -44,7 +44,7 @@ function Body() {
                 "Authorization": `JWT ${sessionStorage.getItem("accessToken")}`
             }
         }).then(response => response.json())
-        .then(data => console.log("data:", data));
+        .then(data => console.log("Restaurant data:", data));
     }, [])
     
 
@@ -69,15 +69,15 @@ function Body() {
 
     // console.log("completed")
 
-    const { userName, setUserName } = useContext(myuserContext);
+    // const { userName, setUserName } = useContext(myuserContext);
 
     return (
         <>
-            <div className='flex gap-2 justify-start m-4'>
+            <div className='flex gap-2 justify-start m-4 ml-24'>
                 <Search SearchRestaurants={SearchRestaurants} />
                 <TopRatedRestaurants filterTopRestaurants={FilterTopRestaurants} />
                 <FastDelivery fastRestaurants={FastDeliveringRestaurants} />
-                <span><input type="text" value={userName} onChange={e => setUserName(e.target.value)} /></span>
+                {/* <span><input type="text" value={userName} onChange={e => setUserName(e.target.value)} /></span> */}
             </div>
 
             <div className='grid grid-cols-4 justify-items-center'>
@@ -93,7 +93,3 @@ function Body() {
 }
 
 export default Body
-
-/**
- * whenever 
- */
