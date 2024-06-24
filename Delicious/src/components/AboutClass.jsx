@@ -35,7 +35,7 @@ class AboutClass extends React.Component{
                 <h1>fetching props name:{this.props.name} and age: {this.props.age}</h1>
                 <h1>Count: {this.state.count}</h1>
                 {/* to updated count value, we need to bind the updateCount mehod with this */}
-                <button onClick={UpdateCount.bind(this)}>Update count</button>
+                <button className="border-2 border-blue-50" onClick={UpdateCount.bind(this)}>Class Update count</button>
             </>
         )
     }

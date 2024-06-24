@@ -10,6 +10,7 @@ import ParentAbout from './components/ParentAbout.jsx'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Memo from './components/Memo.jsx'
 import Login from './components/Login.jsx'
+import About from './components/About.jsx'
 
 const appRouter = createBrowserRouter([
     {
@@ -30,8 +31,8 @@ const appRouter = createBrowserRouter([
                 element:<Body/>
             },
             {
-                path:'/help',
-                element:<Body/>
+                path:'/parentAbout',
+                element:<About/>
             },
             {
                 path:'/cart',
@@ -41,7 +42,6 @@ const appRouter = createBrowserRouter([
                 path:'/login',
                 element:<Login/>
             },
-
             {
                 // dynamic routing
                 path:'/restaurant/:resId',

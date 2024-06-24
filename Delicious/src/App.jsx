@@ -5,6 +5,8 @@ import Body from './components/Body'
 import { Outlet } from 'react-router-dom'
 import myuserContext from './utils/myuserContext'
 import { useContext, useState } from 'react'
+import { Provider } from 'react-redux'
+import appStore from './utils/appStore'
 
 /**
  * Header
@@ -20,34 +22,16 @@ function App() {
   const [userName, setUserName] = useState("Gourav");
   return (
     <>
-      <myuserContext.Provider value={{userName, setUserName}}>
-        <Header />
-        <Outlet />
-        <Footer />
-      </myuserContext.Provider> 
+      {/* provide the access to appStore to entire appn */}
+      <Provider store={appStore}>
+        <myuserContext.Provider value={{ userName, setUserName }}>      {/*providing the user context to entire appn.*/}
+          <Header />
+          <Outlet />
+          <Footer />
+        </myuserContext.Provider>
+      </Provider>
     </>
   )
 }
 
 export default App
-
-{/* <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p> */}

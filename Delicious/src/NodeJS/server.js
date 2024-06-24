@@ -4,6 +4,9 @@ import {routes} from './routes/restaurants.routes.js'
 import {userRoutes} from "./routes/users.routes.js";
 import verifyToken from "./middleware/verifyToken.js";
 import cors from "cors";
+import { menuRoutes } from "./routes/restaurantMenu.routes.js";
+
+
 //create application server
 const app = express();
 
@@ -22,6 +25,7 @@ app.listen("5100", () => {
 
 routes(app);
 userRoutes(app);
+menuRoutes(app);
 
 // 1) create cluster
 // 2) connect server to DB

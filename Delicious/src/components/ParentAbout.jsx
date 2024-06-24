@@ -25,7 +25,7 @@ class ParentAbout extends React.Component {
     }
     
     render() {
-        console.log("parent rendered");
+        console.log("class and functional components rendered: parent rendered");
         return (
             <>
                 <About name="Gourav kamboj" age="26" />
@@ -36,9 +36,6 @@ class ParentAbout extends React.Component {
     }
 }
 
-
-// function ParentAbout(){
-// }
 
 export default ParentAbout;
 

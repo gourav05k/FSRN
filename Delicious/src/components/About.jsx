@@ -29,7 +29,7 @@ function About() {
         <>  
             {console.log("functional child return")}
             <h1>About Component</h1>
-            <button onClick={updateCount}>Functional Count</button>
+            <button className="border-2 border-black" onClick={updateCount}>Functional Count button</button>
         </>
     )
 }

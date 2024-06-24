@@ -7,8 +7,6 @@ function Restaurantcard(props) {
     // console.log("hi restaurant",restaurant);
     // console.log("restaurant.imageId", restaurant.imageId);
 
-    
-
     return (
         <>
             <div className="card-container">
