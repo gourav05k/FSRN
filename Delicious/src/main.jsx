@@ -24,7 +24,7 @@ const appRouter = createBrowserRouter([
             },
             {
                 path:'/search',
-                element:<Body/>
+                element:<Body />
             },
             {
                 path:'/offers',

@@ -33,3 +33,15 @@ export function fetch(req, res) {
             res.json(data);
         }).catch(err => res.status(500).json({ message: err.message }))
 }
+
+//controller to fetch menu items of all restaurant
+export function fetchAll(req, res) {
+
+    restaurantMenuModel.find()
+        .then(data => {
+            if (!data) {
+                res.status(400).json({ messge: "No restaurant data found" });
+            }
+            res.json(data);
+        }).catch(err => res.status(500).json({ message: err.message }))
+}

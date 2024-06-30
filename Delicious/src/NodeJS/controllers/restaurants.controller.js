@@ -2,7 +2,7 @@
 
 import restaurantModel from '../model/restaurants.model.js'
 
-// controller to create/add restaurant data 
+// controller to create/add restaurant data
 export function create(req, res) {
     // get data from req body
     const { imageId, name, rating, deliveryTime, cuisine, location, offer } = req.body;

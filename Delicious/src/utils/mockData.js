@@ -22,7 +22,7 @@ export const restaurantMenuItems  = [
         name: "Peri Peri",
         price: 79,
         rating: "4.6",
-        details: "",
+        details: "French fries tossed in peri peri",
     },
     {
         id: 4,
@@ -36,7 +36,7 @@ export const restaurantMenuItems  = [
 
 export const restaurant_details = [
     {
-        id : 1,
+        _id : 1,
         imageId: "/iydxtay1mnne2ktw7txe",
         offer:"30% off upto Rs. 100",
         name: "BBQ",
@@ -46,7 +46,7 @@ export const restaurant_details = [
         location: "Phoenix marketcity, Pune"
     },
     {
-        id : 2,
+        _id : 2,
         imageId: "/noc7ieivirqxtpujhsgl",
         offer:"20% off upto Rs. 150",
         name: "Domino's",
@@ -56,7 +56,7 @@ export const restaurant_details = [
         location: "Yerewada, Pune"
     },
     {
-        id : 3,
+        _id : 3,
         imageId: "/t75cewfmn6nhtlureo8g",
         offer:"35% off upto Rs. 200",
         name: "UBQ",
@@ -66,7 +66,7 @@ export const restaurant_details = [
         location: "Lohegaon, Pune"
     },
     {
-        id : 4,
+        _id : 4,
         imageId: "/94654fdf308764cd0faf83dba35bcdc3",
         offer:"50% off upto Rs. 150",
         name: "NH1 Bowls",
@@ -76,7 +76,7 @@ export const restaurant_details = [
         location: "Koregaon Park, Pune"
     },
     {
-        id : 5,
+        _id : 5,
         imageId: "/85825a6d74b1059a63a9b688de9f67ce",
         offer:"50% off upto Rs. 100",
         name: "Nic",
@@ -86,7 +86,7 @@ export const restaurant_details = [
         location: "Season's Mall, Pune"
     },
     {
-        id : 6,
+        _id : 6,
         imageId: "/63178e3e64d503a479f2a2048a474552",
         offer:"50% off upto Rs. 100",
         name: "Subway",
