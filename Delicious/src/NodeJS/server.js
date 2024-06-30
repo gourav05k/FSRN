@@ -96,7 +96,7 @@ app.get("/", (req, res) => {
 
 // route level middleware (logUSerRequest)--> passed in route.
 // app.get("/users", logUSerRequest, (req, res) => {
-app.get("/users", verifyToken, (req, res) => {
+app.get("/users", (req, res) => {
     res.send(users);
 })
 

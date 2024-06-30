@@ -30,7 +30,7 @@ function verifyToken(req, res, next) {
     }
     else {
         console.log("no token present");
-        res.status(500).json({ message: err.message});
+        res.status(500).json({ message: "no token present"});   
     }
 
 }

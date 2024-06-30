@@ -1,22 +1,35 @@
-// import './Body.css'
 import Restaurantcard from './RestaurantCard'
-import { restaurant_details } from '../utils/mockData'
 import TopRatedRestaurants from './TopRatedRestaurant'
-import Search from './Search'
 import { useEffect, useState } from 'react'
 import FastDelivery from './FastDelivery'
 import { Link } from 'react-router-dom'
 import myuserContext from '../utils/myuserContext'
 import { useContext } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { searchRestaurants } from '../utils/searchSlice';
+import { fetchRestaurants } from '../utils/searchSlice';
 
 function Body() {
-    
+
+    console.log("Calling Body ***************************");
     const searchResults = useSelector(store => store.search.searchResults);
     const searchKeyword = useSelector(store => store.search.searchKeyword);
-    console.log("searchResults from store in body", searchResults);
-    console.log("searchKeyword from store in body: ", searchKeyword);
+    const status = useSelector(store => store.search.status);
+    const error = useSelector(store => store.search.err);
+
+
+    const dispatch = useDispatch();
+
+    // dispatch the fetchRestaurants action when the component mounts.
+    useEffect(() => {
+        console.log("Dispatching fetchRestaurants action");
+        dispatch(fetchRestaurants());
+    }, [dispatch]);
+
+
+    console.log("searchKeyword : ", searchKeyword);
+    console.log("searchResults : ", searchResults);
+    console.log("status : ", status);
+    console.log("error : ", error);
 
     const [filteredRestaurants, setFilteredRestaurants] = useState(searchResults);
     const [isTopRated, setIsTopRated] = useState(false);
@@ -30,45 +43,24 @@ function Body() {
         setIsFastDelivery(true);
     }
 
-    // API call to fetch data.
-    // useEffect(() => {
-    //     // console.log("fetch restaurants useEffect called");
-    //     fetch('http://localhost:5100/api/restaurants', {
-    //         method: "GET",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             "Authorization": `JWT ${sessionStorage.getItem("accessToken")}`
-    //         }
-    //     }).then(response => response.json())
-    //         .then(data => {
-    //             // console.log("Restaurant data:", data);
-    //             // setFilteredRestaurants(data);
-    //         }).catch(err => console.log(err.message));
-    // }, [])
-
 
     /**
      * if search text updated, find restourants based on updated search
      * check if top rated flag was true-> apply top rated as well on the prev search if true
      * else show updated results based on new search text
      */
-    
+
     useEffect(() => {
-        let searchRestaurants = searchResults;
+        let filtered = searchResults;
         if (isTopRated) {
-            // console.log("yes top");
-            searchRestaurants = searchRestaurants.filter(res => parseFloat(res.rating) > 4.1);
+            filtered = filtered.filter(res => parseFloat(res.rating) > 4.1);
         }
         if (isFastDelivery) {
-            searchRestaurants = searchRestaurants.filter(res => Number(res.deliveryTime.slice(0, 2)) < 30);
+            filtered = filtered.filter(res => Number(res.deliveryTime.slice(0, 2)) < 30);
         }
-        setFilteredRestaurants(searchRestaurants);
-        // console.log("filtered Restaurants: ", filteredRestaurants);
+        setFilteredRestaurants(filtered);
     }, [searchResults, isTopRated, isFastDelivery])
 
-    // console.log("completed")
-
-    // const { userName, setUserName } = useContext(myuserContext);
 
     return (
         <>
@@ -83,8 +75,6 @@ function Body() {
                 <div className='flex justify-center space-x-2 px-4 py-2 gap-6 bg-white-100'>
                     <TopRatedRestaurants filterTopRestaurants={FilterTopRestaurants} />
                     <FastDelivery fastRestaurants={FastDeliveringRestaurants} />
-                    {/* <span><input type="text" value={userName} onChange={e => setUserName(e.target.value)} /></span> */}
-                    {/* <Search SearchRestaurants={SearchRestaurants} /> */}
                 </div>
             </div>
 
@@ -97,11 +87,9 @@ function Body() {
                         {filteredRestaurants.map((res) =>
                             < Link to={"/restaurant/" + res._id} key={res._id}>
                                 <div>
-                                    {/* {console.log("res in line 88", res)} */}
                                     <Restaurantcard key={res._id} restaurant={res} />
                                 </div>
                             </Link>
-                            // above link is used to add link to each card to its restaurnt details page /restaurant/:res.id
                         )}
                     </div>
                 </div >
@@ -110,4 +98,4 @@ function Body() {
     )
 }
 
-export default Body
+export default Body;
