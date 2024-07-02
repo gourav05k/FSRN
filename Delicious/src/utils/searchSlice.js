@@ -15,7 +15,7 @@ export const fetchRestaurants = createAsyncThunk(
          */
 
         try {
-            console.log("coming in try============")
+            console.log("coming in fetchRestaurants ============")
             const response = await fetch('http://localhost:5100/api/restaurants', {
                 method: "GET",
                 headers: {
@@ -23,6 +23,8 @@ export const fetchRestaurants = createAsyncThunk(
                     // "Authorization": `JWT ${sessionStorage.getItem("accessToken")}`
                 }
             });
+            
+            console.log("waiting for response")
             const data = await response.json();         //Waits for the response and converts it to JSON.
             console.log("API response data:", data);
             if (response.ok) {          //it checks reponse and returns the data, which resolves the promise and triggers the fulfilled action with the data as payload.
@@ -44,17 +46,22 @@ const searchSlice = createSlice({
         searchResults: [],   //initial state of the search results will be empty string
         searchKeyword: "",
         status: "idle",
-        err: null
+        err: null,
+        allRestaurants: []
     },
     // reducer containing action functions
     reducers: {
         searchRestaurants: (state, action) => {
-            console.log("IN Reducer func--------")
+            console.log("IN Reducer func in search Slice ****************** ")
             console.log("action.payload:", action.payload);
             state.searchKeyword = action.payload;
             console.log("status: ", state.status);
-            state.searchResults = state.searchResults.filter(res => res.name.toLowerCase().includes(state.searchKeyword.toLowerCase()));;
+            // if(action.payload === ""){
+            //     state.searchResults = state.allRestaurants;
+            // }else{
+            state.searchResults = state.allRestaurants.filter(res => res.name.toLowerCase().includes(state.searchKeyword.trim().toLowerCase()));;
             console.log("State.searchResults:", state.searchResults);
+            // }
         }
     },
     extraReducers: (builder) => {
@@ -65,6 +72,7 @@ const searchSlice = createSlice({
             .addCase(fetchRestaurants.fulfilled, (state, action) => {
                 state.status = 'succeeded';
                 state.searchResults = action.payload;
+                state.allRestaurants = action.payload; // Store all restaurants
             })
             .addCase(fetchRestaurants.rejected, (state, action) => {
                 state.status = 'failed';

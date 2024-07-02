@@ -5,10 +5,10 @@ import restaurantModel from '../model/restaurants.model.js'
 // controller to create/add restaurant data
 export function create(req, res) {
     // get data from req body
-    const { imageId, name, rating, deliveryTime, cuisine, location, offer } = req.body;
+    const { imageId, name, rating, deliveryTime, cuisine, location, offer, category } = req.body;
 
     // crt a new data row in the table we have in model
-    const newRestaurant = new restaurantModel({ imageId, name, rating, deliveryTime, cuisine, location, offer })
+    const newRestaurant = new restaurantModel({ imageId, name, rating, deliveryTime, cuisine, location, offer, category })
 
     // save the new row data and send it to the cloud
     newRestaurant.save()   //returns a promise as save is an async method
@@ -47,7 +47,7 @@ export function fetchOne(req, res) {
     }
     
 // controller to update one restaurant data
-export function updateOne(req,res){
+export function updateOne(req, res){
     const updatedFields = req.body
     const _id = req.params.id;
     restaurantModel.findByIdAndUpdate(_id, updatedFields)

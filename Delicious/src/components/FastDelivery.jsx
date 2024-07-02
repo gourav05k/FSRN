@@ -8,7 +8,7 @@ function FastDelivery(props) {
     }
 
     return (
-        <button onClick={FastDeliveringRestaurants} className='px-6 py-1 bg-white rounded-full shadow-md focus:bg-gray-200 focus:ring-2 focus:ring-orange-300'>Fast Delivery</button>
+        <button onClick={FastDeliveringRestaurants} className='px-6 py-1 bg-white rounded-full border border-gray-200 focus:bg-gray-100 focus:ring-1 focus:ring-gray-400'>Fast Delivery</button>
     )
 }
 export default FastDelivery;

@@ -10,7 +10,8 @@ const restaurantSchema = new mongoose.Schema({
     deliveryTime: String,
     cuisine: String,
     location: String,
-    offer: String
+    offer: String,
+    category: String
 })
 
 // convert schema to model. restaurants table will follow restaurantSchema
