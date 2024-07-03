@@ -28,9 +28,9 @@ function Header() {
     return (
         <>
             <div className='flex justify-between w-full items-center border-solid border-y-2' >
-                <Link to="/">
+                <a href="/">
                     <img src={logo} alt="logo" width={"100px"} />
-                </Link>
+                </a>
                 <ul className='flex list-none justify-around items-center w-6/12 pr-12 '>
                     <li><Search /></li>
                     {/* <li><button className='flex gap-2 items-center' onClick={SearchRestaurants}>
