@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { addItem, removeItem, emptyItem } from "../utils/cartSlice";
 import { useDispatch } from "react-redux";
+import { Link } from 'react-router-dom';
 import { menuImageBaseUrl } from "../utils/mockData";
 import emptyCart from "../img/empty-cart.jpg"
 
@@ -44,7 +45,7 @@ function Cart() {
             <div className="bg-gray-100">
               <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-10 lg:px-6 text-center">
                 <h1 className="mb-4 text-xl tracking-tight font-extrabold sm:text-xl md:text-3xl lg:text-5xl xl:text-6xl text-orange-500">Your cart is empty</h1>
-                <a href="/" className="inline-flex text-base font-normal rounded-lg text-center transition ease-linear hover:scale-90 hover:bg-green-800 px-5 py-2.5 my-4 bg-green-600 text-white">Continue Shopping</a>
+                <Link to="/" className="inline-flex text-base font-normal rounded-lg text-center transition ease-linear hover:scale-90 hover:bg-green-800 px-5 py-2.5 my-4 bg-green-600 text-white">Continue Shopping</Link>
               </div>
             </div>
           </section>
@@ -94,10 +95,10 @@ function Cart() {
                     </button>
                   </div>
                 ))}
-                <a href="/" className="flex font-semibold text-orange-600 text-sm mt-10">
+                <Link to="/" className="flex font-semibold text-orange-600 text-sm mt-10">
                   <svg className="fill-current mr-2 text-orange-600 w-4" viewBox="0 0 448 512"><path d="M134.059 296H448v40H0v-40h134.059z" /></svg>
                   Continue Shopping
-                </a>
+                </Link>
               </div>
 
               <div id="summary" className="w-1/4 px-8 py-10">
