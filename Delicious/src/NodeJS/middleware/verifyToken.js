@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken"
 import userModel from "../model/users.model.js";
 
 function verifyToken(req, res, next) {
-    console.log("in verify token");
+    // console.log("in verify token");
 
     console.log("token val:", req.headers['authorization']);
     if (req.headers &&

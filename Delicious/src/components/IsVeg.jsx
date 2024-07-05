@@ -1,7 +1,7 @@
 function IsVeg(props) {
 
     function FilterVegRestaurants(){
-        console.log("filtering only veg restaurants-----------");
+        console.log("filtering only veg restaurants");
         props.filterVegRestaurants();
     }
 

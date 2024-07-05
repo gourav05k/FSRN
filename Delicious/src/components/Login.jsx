@@ -1,21 +1,20 @@
 import { useState } from "react";
 import Body from "./Body";
 import logo from '../img/logo1.png'
+
 export default function Login() {
 
     const [isSignUp, setIsSignUp] = useState(true);
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
-    // console.log("name: ", fullName);
-    // console.log("email: ", email);
-    // console.log("password: ", password);
+    const [errorMessage, setErrorMessage] = useState("");
 
     // Call the APIs with details submitted in form
     function handleSubmit() {
-        console.log("form submitted");
+        event.preventDefault();     // Prevent the default form submission
         !isSignUp ? register() : login();
+        // console.log("form submitted");
     }
 
     function register() {
@@ -34,10 +33,20 @@ export default function Login() {
                 })
             }).then(response => response.json())    //this .json() also returns promise. so we need to resolve it
             .then(data => {
-                console.log(data)
-                setIsSignUp(true);
+                // console.log("--------- data ---------", data);
+                if (data._id) { // the API responds with a id property
+                    console.log("Registered successfully");
+                    setIsSignUp(true);
+                    setFullName("");
+                    setEmail("");
+                    setPassword("");
+                    setErrorMessage("Registered successfully");
+                } else {
+                    console.error("Registration failed: ", data.message);
+                    setErrorMessage(data.message);
+                }
             })
-            .catch(err => err.message);
+            .catch(err => setErrorMessage("Error: " + err.message));
     }
 
     // fetch the response from the login API and use the token stored in session storage.
@@ -55,9 +64,22 @@ export default function Login() {
                 })
             }).then(response => response.json())    //this .json() also returns promise. so we need to resolve it
             .then(data => {
-                console.log("------------ data-----------", data);
-                sessionStorage.setItem("accessToken", data.accessToken);        //get the accessToken from browser session storage. use the same variable name.
-            })
+                console.log("------------ data-------1----", data);
+                if (data.accessToken) { // the API responds with an accessToken
+                    sessionStorage.setItem("accessToken", data.accessToken); //set the accessToken in browser session storage. use the same variable name.
+                    console.log("Login successful");
+                    setErrorMessage("");
+                    window.location.href = "/"; // Redirect to the main page
+                } else {
+                    console.log("Login failed");
+                    setErrorMessage(data.message);
+                }
+                console.log("------------ data-------2---", data);
+            }).catch(err => {
+                console.log("error: ", err.message);
+                setErrorMessage("Error: " + err.message)
+
+            });
     }
 
     return (
@@ -73,23 +95,23 @@ export default function Login() {
                         <h1 className="text-xl font-bold leading-tight tracking-tight  md:text-2xl">
                             Sign in to your account
                         </h1>
-                        <form className="space-y-4 md:space-y-6" action="#!" onSubmit={handleSubmit}>
-                            {/* <!-- name input --> */}
+                        <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
+                            {/* name input */}
                             {!isSignUp &&
                                 <div>
-                                    <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-600 ">Your Name</label>
-                                    <input type="email" name="email" id="email" className=" border border-gray-300 rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full p-2.5 bg-gray-100 dar placeholder-gray-400" placeholder="Full Name" required onChange={e => setFullName(e.target.value)} />
+                                    <label htmlFor="fullName" className="block mb-2 text-sm font-medium text-gray-600 ">Your Name</label>
+                                    <input type="text" id="fullName" value={fullName} className=" border border-gray-300 rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full p-2.5 bg-gray-100 dar placeholder-gray-400" placeholder="Full Name" required onChange={e => setFullName(e.target.value)} />
                                 </div>
                             }
                             {/* email input */}
                             <div>
                                 <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-600 ">Your email</label>
-                                <input type="email" name="email" id="email" className=" border border-gray-300 rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full p-2.5 bg-gray-100 dar placeholder-gray-400" placeholder="name@gmail.com" required onChange={e => setEmail(e.target.value)} />
+                                <input type="email" id="email" value={email} className=" border border-gray-300 rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full p-2.5 bg-gray-100 dar placeholder-gray-400" placeholder="name@gmail.com" required onChange={e => setEmail(e.target.value)} />
                             </div>
                             {/* password input */}
                             <div>
                                 <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-600">Password</label>
-                                <input type="password" name="password" id="password" placeholder="••••••••" className="border border-gray-300 rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full p-2.5 bg-gray-100 placeholder-gray-400" required onChange={e => setPassword(e.target.value)} />
+                                <input type="password" id="password" value={password} placeholder="••••••••" className="border border-gray-300 rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full p-2.5 bg-gray-100 placeholder-gray-400" required onChange={e => setPassword(e.target.value)} />
                             </div>
                             <div className="flex items-center justify-between">
                                 <div className="flex items-start">
@@ -107,14 +129,26 @@ export default function Login() {
                                 {!isSignUp ? "Register" : "Login"}
                             </button>
 
+                            {errorMessage && <p className="text-red-600 text-center font-bold">{errorMessage}</p>}
+
                             {isSignUp &&
                                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                                    Don't have an account yet? <a href="#" className="font-medium text-orange-500 hover:underline" onClick={() => setIsSignUp(false)}>Sign up</a>
+                                    Don't have an account yet? <a href="#" className="font-medium text-orange-500 hover:underline" onClick={() => {
+                                        setIsSignUp(false);
+                                        setFullName("");
+                                        setEmail("");
+                                        setPassword("");
+                                    }}>Sign up</a>
                                 </p>
                             }
                             {!isSignUp &&
                                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                                    Already have an account? <a href="#" className="font-medium text-orange-500 hover:underline" onClick={() => setIsSignUp(true)}>Login here!</a>
+                                    Already have an account? <a href="#" className="font-medium text-orange-500 hover:underline" onClick={() => {
+                                        setIsSignUp(true)
+                                        setFullName("");
+                                        setEmail("");
+                                        setPassword("");
+                                    }}>Login here!</a>
                                 </p>
                             }
                         </form>

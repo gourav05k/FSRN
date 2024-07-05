@@ -11,7 +11,7 @@ import IsVeg from './IsVeg'
 
 function Body() {
 
-    // console.log("Calling Body ***************************");
+    console.log("Calling Body ***************************");
     const searchResults = useSelector(store => store.search.searchResults);
     const searchKeyword = useSelector(store => store.search.searchKeyword);
     const status = useSelector(store => store.search.status);
@@ -22,7 +22,7 @@ function Body() {
 
     // dispatch the fetchRestaurants action when the component mounts.
     useEffect(() => {
-        console.log("Dispatching fetchRestaurants action in Body *************");
+        // console.log("Dispatching fetchRestaurants action in Body *************");
         dispatch(fetchRestaurants());
     }, [dispatch]);
 

@@ -11,6 +11,8 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Memo from './components/Memo.jsx'
 import Login from './components/Login.jsx'
 import About from './components/About.jsx'
+import Offers from './components/Offers.jsx'
+import Help from './components/Help.jsx'
 
 const appRouter = createBrowserRouter([
     {
@@ -28,7 +30,11 @@ const appRouter = createBrowserRouter([
             },
             {
                 path:'/offers',
-                element:<Body/>
+                element:<Offers/>
+            },
+            {
+                path:'/help',
+                element:<Help/>
             },
             {
                 path:'/parentAbout',

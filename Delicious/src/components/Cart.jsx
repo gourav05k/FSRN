@@ -44,7 +44,7 @@ function Cart() {
             <div className="bg-gray-100">
               <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-10 lg:px-6 text-center">
                 <h1 className="mb-4 text-xl tracking-tight font-extrabold sm:text-xl md:text-3xl lg:text-5xl xl:text-6xl text-orange-500">Your cart is empty</h1>
-                <a href="/" className="inline-flex text-base font-normal rounded-lg text-center px-5 py-2.5 my-4 bg-orange-500 text-white">Continue Shopping</a>
+                <a href="/" className="inline-flex text-base font-normal rounded-lg text-center transition ease-linear hover:scale-90 hover:bg-green-800 px-5 py-2.5 my-4 bg-green-600 text-white">Continue Shopping</a>
               </div>
             </div>
           </section>
