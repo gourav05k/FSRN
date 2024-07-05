@@ -3,7 +3,6 @@ import { menuImageBaseUrl } from "../utils/mockData";
 import { useDispatch } from "react-redux";
 import { addItem, removeItem } from "../utils/cartSlice";
 import { useEffect, useState } from "react";
-import { MdOutlineRestaurantMenu } from "react-icons/md";
 import { IoRestaurantOutline } from "react-icons/io5";
 import { IoRestaurant } from "react-icons/io5";
 function RestaurantDetails() {
@@ -20,28 +19,6 @@ function RestaurantDetails() {
     const handleAddItem = (item) => {
         dispatch(addItem(item));    //calling the addItem action function to add item to cart.
     }
-
-    // calling API to fetch menu items
-    useEffect(() => {
-        fetch(`http://localhost:5100/api/restaurantMenu/${params.resId}`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log("Restaurant Menu items:", data.menu);
-                if (data) {
-                    setRestaurantMenuItems(data.menu);
-                }
-                else {
-                    console.log("Restaurant menu not available.");
-                    setRestaurantMenuItems([]);
-                }
-            })
-            .catch(err => console.log(err.message));
-    }, [params.resId]);
 
     // calling APi to fetch restaurnt details
     useEffect(() => {
@@ -65,9 +42,34 @@ function RestaurantDetails() {
             .catch(err => console.log(err.message));
     }, [params.resId])
 
+
+
+    // calling API to fetch menu items
+    useEffect(() => {
+        fetch(`http://localhost:5100/api/restaurantMenu/${params.resId}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Restaurant Menu items:", data.menu);
+                if (data) {
+                    setRestaurantMenuItems(data.menu);
+                }
+                else {
+                    console.log("Restaurant menu not available.");
+                    setRestaurantMenuItems([]);
+                }
+            })
+            .catch(err => console.log(err.message));
+    }, [params.resId]);
+
+
     return (
         <>
-            <div className="my-10 mx-4 md:mx-16 lg:mx-32 xl:mx-72 h-auto max-w-4xl flex-col items-center justify-center bg-white">
+            <div className="my-10 mx-4 md:mx-16 lg:mx-32 xl:mx-72 h-auto min-w-max max-w-4xl flex-col items-center justify-center bg-white">
                 <h1 className="font-extrabold text-2xl text-slate-900">{restaurantDetails.name}</h1>
                 <div className="border border-gray-300 drop-shadow-2xl rounded-lg flex-col my-10 px-4 h-auto min-w-full max-w-4xl justify-start bg-white">
                     <div className="flex items-center justify-start">
@@ -84,12 +86,12 @@ function RestaurantDetails() {
                         </svg>
                         <span className="text-lg tracking-tight font-normal underline text-orange-500 mx-2">{restaurantDetails.cuisine}</span>
                     </div>
-                    <p className="flex items-center text-center my-2">
+                    <p className="flex items-center text-center my-2 text-gray-500">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="size-5 mr-5">
                             <path fillRule="evenodd" d="m9.69 18.933.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 0 0 .281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 1 0 3 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 0 0 2.273 1.765 11.842 11.842 0 0 0 .976.544l.062.029.018.008.006.003ZM10 11.25a2.25 2.25 0 1 0 0-4.5 2.25 2.25 0 0 0 0 4.5Z" clipRule="evenodd" />
                         </svg>
                         {restaurantDetails.location}</p>
-                    <p className="flex items-center text-center my-2">
+                    <p className="flex items-center text-center my-2  text-gray-500">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6 mr-4">
                             <path d="M3.375 4.5C2.339 4.5 1.5 5.34 1.5 6.375V13.5h12V6.375c0-1.036-.84-1.875-1.875-1.875h-8.25ZM13.5 15h-12v2.625c0 1.035.84 1.875 1.875 1.875h.375a3 3 0 1 1 6 0h3a.75.75 0 0 0 .75-.75V15Z" />
                             <path d="M8.25 19.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0ZM15.75 6.75a.75.75 0 0 0-.75.75v11.25c0 .087.015.17.042.248a3 3 0 0 1 5.958.464c.853-.175 1.522-.935 1.464-1.883a18.659 18.659 0 0 0-3.732-10.104 1.837 1.837 0 0 0-1.47-.725H15.75Z" />
@@ -98,29 +100,31 @@ function RestaurantDetails() {
                         {restaurantDetails.deliveryTime}</p>
                 </div>
             </div >
-            <div className="font-bold flex items-center my-14 mx-4 md:mx-16 lg:mx-32 xl:mx-72 h-auto min-w-fit max-w-4xl justify-center bg-white text-orange-500">
+            <div className="relative font-bold flex items-center my-14 mx-4 md:mx-16 lg:mx-32 xl:mx-72 h-auto min-w-max max-w-4xl justify-center bg-white text-orange-500">
                 <IoRestaurant className="size-6" />Menu<IoRestaurantOutline className="size-6" />
-
             </div>
+
             {
                 restaurantMenuItems.map((item) =>
-                    <div className="my-4" key={item._id} >
-                        <div className="relative flex my-10 mx-4 md:mx-16 lg:mx-32 xl:mx-72 h-auto min-w-fit max-w-4xl justify-between bg-white">
-                            <div className="flex-col px-2 py-2 min-w-36 max-w-2xl">
-                                <h3 className="text-lg tracking-tight font-bold text-slate-900">{item.name}</h3>
-                                <h5 className="font-bold"><span>&#8377;</span>{item.price}</h5>
-                                <span className="flex items-center font-bold text-green-700">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="#0f766e" color="#0f766e" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
-                                    </svg>{item.rating}</span>
-                                <span className="mb-2 text-base font-medium text-gray-500 tracking-tight">{item.description}</span>
+                    <div className="" key={item._id} >
+                        <div className=" flex my-10 mx-4 md:mx-16 lg:mx-32 xl:mx-72 h-36 min-w-max max-w-4xl justify-between items-start bg-white">
+                            <div className="px-2 min-w-36 max-w-2xl">
+                                <p className="text-lg tracking-tight font-bold text-slate-900">{item.name}</p>
+                                <p className="font-bold"><span>&#8377;</span>{item.price}</p>
+                                {(item.rating) ?
+                                    <p className="flex items-center font-bold text-green-700">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="#0f766e" color="#0f766e" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                                        </svg>{item.rating}</p>
+                                    : <></>}
+                                <p className="mt-2 font-medium text-gray-500">{item.description}</p>
                             </div>
                             <a href="#" className="relative flex-col h-32 w-36 min-w-36">
                                 <img className="absolute h-32 w-36 top-0 left-0 object-cover object-center rounded-xl" src={`${menuImageBaseUrl}${item.imageId}`} alt="Item image" />
                                 <button onClick={() => handleAddItem(item)} className="absolute top-28 left-4 w-28 items-center justify-center font-extrabold text-green-600 border border-gray-300 hover:text-white hover:bg-gradient-to-r from-green-400 via-green-500 to-green-400 bg-white rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 mx-auto">ADD</button>
                             </a>
                         </div>
-                        <hr className="relative flex border-gray-300 mx-4 md:mx-16 lg:mx-32 xl:mx-72 min-w-max max-w-4xl justify-center items-center" />
+                        <hr className="border-gray-300 mx-4 md:mx-16 lg:mx-32 xl:mx-72 min-w-max max-w-4xl" />
                     </div>
                 )
             }

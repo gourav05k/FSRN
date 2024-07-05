@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import restaurantMenuModel from "../model/restaurantMenu.model.js";
 
 // controller to create/add restaurant data 
@@ -44,4 +44,17 @@ export function fetchAll(req, res) {
             }
             res.json(data);
         }).catch(err => res.status(500).json({ message: err.message }))
+}
+
+// controller to update one restaurant menu data
+export function updateOne(req, res){
+    const updatedFields = req.body
+
+    restaurantMenuModel.findOneAndUpdate({ restaurantId: req.params.resId }, updatedFields, {new: true})
+    .then(data => {
+        if(!data){
+            res.status(400).json({message: "Something went wrong"})
+        }
+        res.json(data);
+    }).catch(err => res.status(500).json({message: err.message}));
 }
