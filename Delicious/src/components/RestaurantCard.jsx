@@ -1,4 +1,4 @@
-import { baseImageUrl } from '../utils/mockData'
+import { baseImageUrl } from '../utils/baseData'
 function Restaurantcard(props) {
 
     const restaurant = props.restaurant;

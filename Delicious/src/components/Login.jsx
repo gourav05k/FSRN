@@ -4,6 +4,7 @@ import logo from '../img/logo1.png'
 
 export default function Login() {
 
+    // console.log("Login component rendered");
     const [isSignUp, setIsSignUp] = useState(true);
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
@@ -14,7 +15,7 @@ export default function Login() {
     function handleSubmit() {
         event.preventDefault();     // Prevent the default form submission
         !isSignUp ? register() : login();
-        // console.log("form submitted");
+        console.log("form submitted");
     }
 
     function register() {
@@ -33,7 +34,6 @@ export default function Login() {
                 })
             }).then(response => response.json())    //this .json() also returns promise. so we need to resolve it
             .then(data => {
-                // console.log("--------- data ---------", data);
                 if (data._id) { // the API responds with a id property
                     console.log("Registered successfully");
                     setIsSignUp(true);
@@ -51,7 +51,7 @@ export default function Login() {
 
     // fetch the response from the login API and use the token stored in session storage.
     function login() {
-        console.log("login started");
+        console.log("login process started");
         fetch("http://localhost:5100/api/login",
             {
                 method: "POST",
@@ -64,7 +64,6 @@ export default function Login() {
                 })
             }).then(response => response.json())    //this .json() also returns promise. so we need to resolve it
             .then(data => {
-                console.log("------------ data-------1----", data);
                 if (data.accessToken) { // the API responds with an accessToken
                     sessionStorage.setItem("accessToken", data.accessToken); //set the accessToken in browser session storage. use the same variable name.
                     console.log("Login successful");
@@ -74,7 +73,6 @@ export default function Login() {
                     console.log("Login failed");
                     setErrorMessage(data.message);
                 }
-                console.log("------------ data-------2---", data);
             }).catch(err => {
                 console.log("error: ", err.message);
                 setErrorMessage("Error: " + err.message)

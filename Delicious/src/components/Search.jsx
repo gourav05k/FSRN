@@ -1,25 +1,21 @@
 // import './Search.css'
-import { restaurant_details } from '../utils/mockData';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchRestaurants } from '../utils/searchSlice';
 
-function Search(props) {
+function Search() {
 
     const [searchText, updateSearchText] = useState("");
 
-    console.log("search rendered ************");
-    console.log("searchText var:", searchText);
+    console.log("search component Mounted ************");
+    console.log("search input:", searchText);
     const dispatch = useDispatch();
 
     const filterRestaurants = () => {
-        console.log("inside filter function--------");
-        console.log("search text line 20: ", searchText);
         dispatch(searchRestaurants(searchText));
     }
 
     useEffect(() => {
-        console.log("calling useeffect in Search ***************")
         filterRestaurants();
     }, [searchText])
 
@@ -34,27 +30,15 @@ function Search(props) {
                         </svg>
                     </div>
                     <input type="text" name="searchBar" id="default-search"
-                        className="block w-full h-4 p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg focus:border-black-500 bg-white placeholder-gray-400 focus:ring-black-500 " 
-                        placeholder="Search Resturants" required 
+                        className="block w-full h-4 p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg focus:border-black-500 bg-white placeholder-gray-400 focus:ring-black-500 "
+                        placeholder="Search Resturants" required
                         onChange={(e) => {
                             updateSearchText(e.target.value);
                         }}
-                        />
-                {/* <button className=' bg-white' onClick={filterRestaurants}>Search</button> */}
+                    />
+                    {/* <button className=' bg-white' onClick={filterRestaurants}>Search</button> */}
                 </div>
             </form>
-
-
-            {/* <div className="flex gap-2 px-6 items-center">
-                <input
-                    className="border border-solid border-black"
-                    type="text" name="searchBar" id="searchBar" placeholder='Search here'
-                    onChange={(e) => {
-                        updateSearchText(e.target.value);
-                    }
-                    } />
-                
-            </div> */}
         </>
     )
 }

@@ -20,9 +20,12 @@ import appStore from './utils/appStore'
 function App() {
 
   const [userName, setUserName] = useState("Gourav");
+  console.log("Application started");
+
   return (
     <>
       {/* provide the access to appStore to entire appn */}
+      {console.log("Providing access of App Store to entire Application")}
       <Provider store={appStore}>
         <myuserContext.Provider value={{ userName, setUserName }}>      {/*providing the user context to entire appn.*/}
           <Header />

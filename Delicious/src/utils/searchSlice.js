@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { restaurant_details } from '../utils/mockData';
 import { useState, useEffect } from "react";
 
 // create a thunk: to perform asynchronous operations: fetching API data.
@@ -15,26 +14,26 @@ export const fetchRestaurants = createAsyncThunk(
          */
 
         try {
-            // console.log("coming in fetchRestaurants ============")
+            console.log("fetching Restaurants ============")
             const response = await fetch('http://localhost:5100/api/restaurants', {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                    // "Authorization": `JWT ${sessionStorage.getItem("accessToken")}`
+                    "Authorization": `JWT ${sessionStorage.getItem("accessToken")}`
                 }
             });
             
-            // console.log("waiting for response")
+            console.log("waiting for response")
             const data = await response.json();         //Waits for the response and converts it to JSON.
             // console.log("API response data:", data);
             if (response.ok) {          //it checks reponse and returns the data, which resolves the promise and triggers the fulfilled action with the data as payload.
-                // console.log("API response OK");
+                console.log("API response OK");
                 return data;        // Fulfilled case: the resolved value is returned
             } else {
                 return rejectWithValue(data);   // Rejected case: the error payload is returned
             }
         } catch (err) {
-            // console.log("API error:", err.message);
+            console.log("API error:", err.message);
             return rejectWithValue(err.message);    // Rejected case: the error message is returned
         }
     }
@@ -52,16 +51,9 @@ const searchSlice = createSlice({
     // reducer containing action functions
     reducers: {
         searchRestaurants: (state, action) => {
-            // console.log("IN Reducer func in search Slice ****************** ")
-            // console.log("action.payload:", action.payload);
+            console.log("Filtering data based on search input");
             state.searchKeyword = action.payload;
-            // console.log("status: ", state.status);
-            // if(action.payload === ""){
-            //     state.searchResults = state.allRestaurants;
-            // }else{
-            state.searchResults = state.allRestaurants.filter(res => res.name.toLowerCase().includes(state.searchKeyword.trim().toLowerCase()));;
-            // console.log("State.searchResults:", state.searchResults);
-            // }
+            state.searchResults = state.allRestaurants.filter(res => res.name.toLowerCase().includes(state.searchKeyword.trim().toLowerCase()));
         }
     },
     extraReducers: (builder) => {

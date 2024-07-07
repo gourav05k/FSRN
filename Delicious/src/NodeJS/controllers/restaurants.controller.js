@@ -40,7 +40,7 @@ export function fetchOne(req, res) {
     restaurantModel.findById(_id).
         then(data => {
             if (!data) {
-                res.status(400).json({ messge: "No restaurant data found with given _id" });
+                res.status(400).json({ messge: "No restaurant data found with given id" });
             }
             res.json(data);
         }).catch(err => res.status(500).json({ message: err.message }))
@@ -50,7 +50,7 @@ export function fetchOne(req, res) {
 export function updateOne(req, res){
     const updatedFields = req.body
     const _id = req.params.id;
-    restaurantModel.findByIdAndUpdate(_id, updatedFields)
+    restaurantModel.findByIdAndUpdate(_id, updatedFields, {new: true})
     .then(data => {
         if(!data){
             res.status(400).json({message: "Something went wrong"})

@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { addItem, removeItem, emptyItem } from "../utils/cartSlice";
 import { useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
-import { menuImageBaseUrl } from "../utils/mockData";
+import { menuImageBaseUrl } from "../utils/baseData";
 import emptyCart from "../img/empty-cart.jpg"
 
 function Cart() {
@@ -39,7 +39,9 @@ function Cart() {
   return (
     <>
       {
-        !cartItems.length ?
+        // check if cart is empty, else show cart items
+        !cartItems.length
+          ?
           <section className="bg-white min-w-max">
             <img className="flex justify-center items-center py-4 mx-auto w-48 h-auto" src={emptyCart} alt="empty cart image" />
             <div className="bg-gray-100">

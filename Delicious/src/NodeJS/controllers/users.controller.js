@@ -42,12 +42,13 @@ export function login(req, res) {
         }
         // check if pasword is correct. compare plain text password with hash pasword from the DB.
         const isValidPassword = bcrypt.compareSync(password, userData.password);
+        const secretKey = process.env.JWT_SECRET;
 
         if (!isValidPassword) {
             return res.status(400).send({ message: "Invalid email or password" });
         }
         // using user id to generate unique token for each user.
-        let token = jwt.sign({ id: userData._id }, 'secretKey', { expiresIn: '1h' });
+        let token = jwt.sign({ id: userData._id }, secretKey, { expiresIn: '1h' });
 
         return res.status(200).json({
             user: {

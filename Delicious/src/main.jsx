@@ -16,56 +16,53 @@ import Help from './components/Help.jsx'
 
 const appRouter = createBrowserRouter([
     {
-        path:'/',
-        element:<App/>,
-        errorElement:<Error/>,
-        children:[
+        path: '/',
+        element: <App />,
+        errorElement: <Error />,
+        children: [
             {
-                path:'/',
-                element:<Body/>
+                path: '/',
+                element: <Body />
             },
             {
-                path:'/search',
-                element:<Body />
+                path: '/search',
+                element: <Body />
             },
             {
-                path:'/offers',
-                element:<Offers/>
+                path: '/offers',
+                element: <Offers />
             },
             {
-                path:'/help',
-                element:<Help/>
+                path: '/help',
+                element: <Help />
             },
             {
-                path:'/parentAbout',
-                element:<About/>
+                path: '/parentAbout',
+                element: <About />
             },
             {
-                path:'/cart',
-                element:<Cart/>
+                path: '/cart',
+                element: <Cart />
             },
             {
-                path:'/login',
-                element:<Login/>
+                path: '/login',
+                element: <Login />
             },
             {
                 // dynamic routing
-                path:'/restaurant/:resId',
-                element:<RestaurantDetails/>
+                path: '/restaurant/:resId',
+                element: <RestaurantDetails />
             },
             {
-                path:'/parentAbout',
-                element:<ParentAbout/>
+                path: '/parentAbout',
+                element: <ParentAbout />
             },
             {
-                path:'/memo',
-                element:<Memo/>
+                path: '/memo',
+                element: <Memo />
             },
-
-
         ]
     }
-
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
