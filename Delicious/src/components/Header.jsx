@@ -20,11 +20,11 @@ function Header() {
     }
 
     return (
-        <div className='flex justify-between items-center min-w-max w-full h-full shadow-lg gap-6'>
+        <header className='flex justify-between items-center min-w-max w-full min-h-full h-full px-auto shadow-lg gap-6'>
             <a href="/">
                 <img src={logo} alt="logo" className='w-28 h-full' />
             </a>
-            <ul className='flex justify-end w-full mr-28 md:mr-16 lg:mr-8 xl:mr-28 gap-6 list-none mx-auto items-center'>
+            <ul className='flex justify-end w-full mr-28 md:mr-16 lg:mr-8 xl:mr-28 gap-6 list-none items-center'>
                 <li><Search /></li>
                 <li><Link to="/offers" className='flex gap-2 items-center'>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
@@ -45,7 +45,7 @@ function Header() {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
                     </svg>Sign In</Link></li>
             </ul>
-        </div>
+        </header>
     )
 }
 

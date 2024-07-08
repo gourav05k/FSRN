@@ -62,7 +62,7 @@ function Body() {
 
 
     return (
-        <>
+
             <div className='overflow-auto '>
                 <div className=" mx-auto px-32 min-w-max sm:min-w-min sm:px-16 sm:py-1 sm:max-w-full md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl lg:px-20 mb-36 mt-12">
                     {/* filters */}
@@ -95,7 +95,7 @@ function Body() {
 
                 </div>
             </div>
-        </>
+
     )
 }
 
