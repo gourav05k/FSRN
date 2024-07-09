@@ -1,0 +1,24 @@
+.Header-container{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+.nav-bar{
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    width: 50%;
+    padding-right: 200px;
+}
+
+.search{
+  display: flex;
+  gap: 5px;
+}
+/* Link tag is converted to a tag in style and HTML */
+/* interpretation is same as anchot tag */
+a{
+  text-decoration: none;
+  color: inherit;
+}

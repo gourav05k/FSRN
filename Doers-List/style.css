@@ -1,0 +1,89 @@
+body { 
+  background: rgb(0,0,0);
+  background: radial-gradient(circle, rgba(197, 174, 174, 0.028) 0%, rgb(6, 175, 54) 100%);
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 50px;
+}
+
+#doer-container {
+  background: rgb(0, 0, 0);
+  width: 400px;
+  margin: 0 auto;
+  /* border: 2px solid #000000; */
+  padding: 20px;
+  color: white;
+  border-radius: 15px;
+}
+
+#header {
+  margin: 5px;
+  font-size: 20px;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px; 
+}
+
+#input-box {
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 5px;
+  font-size: 20px;
+}
+
+#input-button {
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.4s;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #00f742;
+}
+
+#input-button:hover {
+  background-color: #45ee80; 
+}
+
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  text-align:left;
+
+}
+
+li {
+border: 1px solid white;
+border-radius: 5px;
+margin-bottom: 10px;
+padding: 10px;
+margin-top: 10px;
+}
+
+.edit-btn, .delete-btn {
+  float: right;
+  color:rgb(250, 249, 249);
+  cursor: pointer;
+  margin: 3px 5px;
+  border: none;
+  padding: 3px 5px;
+  background: none;
+} 
+
+.completed {
+  text-decoration: line-through;
+  color: gray;
+  border: 1px solid gray;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+    border: 1px solid gray;
+  }

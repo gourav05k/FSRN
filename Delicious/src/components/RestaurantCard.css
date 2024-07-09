@@ -1,0 +1,48 @@
+.card-container{
+    display: flex;
+    flex-direction: column;
+    /* position: relative; */
+    width: 200px;
+    margin-bottom: 25px;
+}
+.image-and-text {
+    position: relative;
+}
+
+.image-and-text > img{
+    /* border: 1px solid gray; */
+    border-radius: 5px;
+    width: 278px;
+    height: 185px;
+}
+
+.offer{
+    color: white;
+    top: 140px;
+    position: absolute;
+    font-weight: 1000;
+}
+
+.details{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.restaurant{
+    font-size: larger;
+    font-weight: bold;
+}
+
+.rating-delivery{
+    display: flex;
+    justify-content: start;
+    gap: 20px;
+    font-size: large;
+    font-weight: 600;
+}
+
+.card-container:hover {
+    cursor: pointer;
+    transform: scale(0.95);
+    transition: linear 0.1s;
+  }
