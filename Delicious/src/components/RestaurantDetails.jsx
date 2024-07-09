@@ -70,11 +70,11 @@ function RestaurantDetails() {
     return (
         
         <>
-            <div className="min-w-fit flex flex-col justify-center content-center mx-auto max-w-md">
+            <div className="min-w-fit flex flex-col justify-center content-center mx-8 sm:mx-8 md:mx-12 lg:mx-16 xl:mx-20 max-w-md">
                 <div className="my-10 mx-8 sm:mx-12 md:mx-16 lg:mx-32 xl:mx-72 h-auto min-w-max flex-col items-center justify-center bg-white">
                     <h1 className="font-extrabold text-2xl text-slate-900">{restaurantDetails.name}</h1>
-                    <div className="border border-gray-300 drop-shadow-2xl rounded-lg flex-col my-10 px-4 h-auto min-w-full max-w-4xl justify-start bg-white">
-                        <div className="flex items-center justify-start">
+                    <div className="border border-gray-300 drop-shadow-2xl rounded-lg flex-col my-10 px-4 h-auto min-w-full justify-start bg-white">
+                        <div className="flex items-center justify-start pt-2">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#16a34a" className="size-5">
                                 <path fillRule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clipRule="evenodd" />
                             </svg>
