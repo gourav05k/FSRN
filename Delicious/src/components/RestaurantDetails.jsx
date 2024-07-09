@@ -70,8 +70,8 @@ function RestaurantDetails() {
     return (
         
         <>
-            <div className="min-w-fit">
-                <div className="my-10 mx-8 sm:mx-12 md:mx-16 lg:mx-32 xl:mx-72 h-auto min-w-max max-w-4xl flex-col items-center justify-center bg-white">
+            <div className="min-w-fit flex flex-col justify-center content-center mx-auto max-w-md">
+                <div className="my-10 mx-8 sm:mx-12 md:mx-16 lg:mx-32 xl:mx-72 h-auto min-w-max flex-col items-center justify-center bg-white">
                     <h1 className="font-extrabold text-2xl text-slate-900">{restaurantDetails.name}</h1>
                     <div className="border border-gray-300 drop-shadow-2xl rounded-lg flex-col my-10 px-4 h-auto min-w-full max-w-4xl justify-start bg-white">
                         <div className="flex items-center justify-start">
@@ -102,15 +102,16 @@ function RestaurantDetails() {
                             {restaurantDetails.deliveryTime}</p>
                     </div>
                 </div >
-                <div className="relative font-bold flex items-center my-14 mx-4 md:mx-16 lg:mx-32 xl:mx-72 h-auto min-w-max max-w-4xl justify-center bg-white text-orange-500">
-                    <IoRestaurant className="size-6" />Menu<IoRestaurantOutline className="size-6" />
+                <div className="relative font-bold flex items-center  mx-4 md:mx-16 lg:mx-32 xl:mx-72 h-auto min-w-max justify-center bg-white text-orange-500">
+                    <IoRestaurant className="size-6" />Menu<IoRestaurant className="size-6" />
+                    {/* <IoRestaurant className="size-6" /> */}
                 </div>
 
                 {
                     restaurantMenuItems.map((item) =>
                         <div className="" key={item._id} >
-                            <div className="flex my-10 mx-8 sm:mx-12 md:mx-16 lg:mx-32 xl:mx-72 h-36 max-w-4xl justify-between items-start bg-white">
-                                <div className="px-2 min-w-min max-w-2xl sm:min-w-min justify-between">
+                            <div className="flex my-10 mx-8 sm:mx-12 md:mx-16 lg:mx-32 xl:mx-72 h-36 justify-between items-start bg-white">
+                                <div className="px-2 min-w-min sm:min-w-min">
                                     <p className="text-lg tracking-tight font-bold min-w-max text-slate-900 ">{item.name}</p>
                                     <p className="font-bold"><span>&#8377;</span>{item.price}</p>
                                     {(item.rating) ?
@@ -126,7 +127,7 @@ function RestaurantDetails() {
                                     <button onClick={() => handleAddItem(item)} className="absolute top-28 left-4 w-28 items-center justify-center font-extrabold text-green-600 border border-gray-300 hover:text-white hover:bg-gradient-to-r from-green-400 via-green-500 to-green-400 bg-white rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 mx-auto">ADD</button>
                                 </a>
                             </div>
-                            <hr className="border-gray-300 mx-4 md:mx-16 lg:mx-32 xl:mx-72 min-w-max max-w-4xl" />
+                            <hr className="border-gray-300 mx-4 md:mx-16 lg:mx-32 xl:mx-72 min-w-max" />
                         </div>
                     )
                 }
