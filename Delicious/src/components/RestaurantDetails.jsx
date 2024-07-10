@@ -3,8 +3,10 @@ import { menuImageBaseUrl } from "../utils/baseData";
 import { useDispatch } from "react-redux";
 import { addItem, removeItem } from "../utils/cartSlice";
 import { useEffect, useState } from "react";
-import { IoRestaurantOutline } from "react-icons/io5";
+// import { IoRestaurantOutline } from "react-icons/io5";
 import { IoRestaurant } from "react-icons/io5";
+import { Link } from 'react-router-dom';
+
 function RestaurantDetails() {
     const [restaurantDetails, setRestaurantDetails] = useState([]);
     const [restaurantMenuItems, setRestaurantMenuItems] = useState([]);
@@ -122,10 +124,10 @@ function RestaurantDetails() {
                                         : <></>}
                                     <p className="mt-2 font-medium text-gray-500 overflow-hidden min-w-min max-w-fit line-clamp-2 md:line-clamp-3">{item.description}</p>
                                 </div>
-                                <a href="#" className="relative flex-col h-32 w-36 min-w-36 ml-4">
+                                <Link to="#" className="relative flex-col h-32 w-36 min-w-36 ml-4">
                                     <img className="absolute h-32 w-36 top-0 left-0 object-cover object-center rounded-xl" src={`${menuImageBaseUrl}${item.imageId}`} alt="Item image" />
                                     <button onClick={() => handleAddItem(item)} className="absolute top-28 left-4 w-28 items-center justify-center font-extrabold text-green-600 border border-gray-300 hover:text-white hover:bg-gradient-to-r from-green-400 via-green-500 to-green-400 bg-white rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 mx-auto">ADD</button>
-                                </a>
+                                </Link>
                             </div>
                             <hr className="border-gray-300 mx-4 md:mx-16 lg:mx-32 xl:mx-72 min-w-max" />
                         </div>
