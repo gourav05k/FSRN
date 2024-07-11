@@ -15,7 +15,7 @@ export const fetchRestaurants = createAsyncThunk(
 
         try {
             console.log("fetching Restaurants ============")
-            const response = await fetch('http://localhost:5100/api/restaurants', {
+            const response = await fetch('https://webapis-6ao0.onrender.com/api/v1/restaurants', {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
