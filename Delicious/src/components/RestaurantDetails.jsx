@@ -22,7 +22,7 @@ function RestaurantDetails() {
 
     // calling APi to fetch restaurnt details
     useEffect(() => {
-        fetch(`https://webapis-6ao0.onrender.com/api/restaurant/${params.resId}`, {
+        fetch(`https://webapis-6ao0.onrender.com/api/v1/restaurant/${params.resId}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -44,7 +44,7 @@ function RestaurantDetails() {
 
     // calling API to fetch menu items
     useEffect(() => {
-        fetch(`https://webapis-6ao0.onrender.com/api/restaurantMenu/${params.resId}`, {
+        fetch(`https://webapis-6ao0.onrender.com/api/v1/restaurantMenu/${params.resId}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"

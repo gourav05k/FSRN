@@ -4,10 +4,10 @@ import isAdmin from "../middleware/isAdmin.js";
 
 // add routes to the controllers
 export function routes(app){
-    app.post('/api/restaurants', verifyToken, isAdmin, create);
-    app.get('/api/restaurants', fetch);
-    app.get('/api/restaurant/:id', fetchOne);
-    app.put('/api/restaurant/:id', verifyToken, isAdmin, updateOne);
-    app.delete('/api/restaurants', verifyToken, isAdmin, deleteAll);
-    app.delete('/api/restaurant/:id', verifyToken, isAdmin, deleteOne);
+    app.post('/api/v1/restaurants', verifyToken, isAdmin, create);
+    app.get('/api/v1/restaurants', fetch);
+    app.get('/api/v1/restaurant/:id', fetchOne);
+    app.put('/api/v1/restaurant/:id', verifyToken, isAdmin, updateOne);
+    app.delete('/api/v1/restaurants', verifyToken, isAdmin, deleteAll);
+    app.delete('/api/v1/restaurant/:id', verifyToken, isAdmin, deleteOne);
 }
