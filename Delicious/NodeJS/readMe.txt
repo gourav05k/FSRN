@@ -7,7 +7,7 @@ For better preseentation of the appn, we will follow MVC architecture. (Model-Vi
  * 3. Connect server with mongodb 
  * 4. MVC
  * 5. Routes ---- path ("/api/restaurants" , controller)
- * 6. Controller ---- handle logic (post , fetch, update)
+ * 6. Controller ---- handle logic (post , fetch, update etc.)
  * 7. Model ---- (Database Table with schema)
- * 8. Use Mongoose Methods to work on this table (save() , find())
+ * 8. Use Mongoose Methods to work on this table (save() , find(), and so on)
  */
