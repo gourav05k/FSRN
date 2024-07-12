@@ -8,7 +8,7 @@ export default function Login() {
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [errorMessage, setErrorMessage] = useState("");
+    const [message, setMessage] = useState("");
 
     // Call the APIs with details submitted in form
     function handleSubmit() {
@@ -39,13 +39,16 @@ export default function Login() {
                     setFullName("");
                     setEmail("");
                     setPassword("");
-                    setErrorMessage("Registered successfully");
+                    setMessage("Registered successfully!");
                 } else {
                     console.error("Registration failed: ", data.message);
-                    setErrorMessage(data.message);
+                    setMessage("User already exists!");
                 }
             })
-            .catch(err => setErrorMessage("Error: " + err.message));
+            .catch(err => {
+                console.log("Error: " + err.message)
+                setMessage("Registration failed. Try again!");
+            });
     }
 
     // fetch the response from the login API and use the token stored in session storage.
@@ -66,15 +69,15 @@ export default function Login() {
                 if (data.accessToken) { // the API responds with an accessToken
                     sessionStorage.setItem("accessToken", data.accessToken); //set the accessToken in browser session storage. use the same variable name.
                     console.log("Login successful");
-                    setErrorMessage("");
+                    setMessage("Login successful!");
                     window.location.href = "/"; // Redirect to the main page
                 } else {
-                    console.log("Login failed");
-                    setErrorMessage(data.message);
+                    console.log("Login failed:", data.message);
+                    setMessage("Not a registered user!");
                 }
             }).catch(err => {
                 console.log("error: ", err.message);
-                setErrorMessage("Error: " + err.message)
+                setMessage("Login failed, Try again!");
 
             });
     }
@@ -126,7 +129,22 @@ export default function Login() {
                                 {!isSignUp ? "Register" : "Login"}
                             </button>
 
-                            {errorMessage && <p className="text-red-600 text-center font-bold">Not a registered user</p>}
+                            {
+                                (
+                                    message === "Login successful!" ||
+                                    message === "Registered successfully!"
+                                ) &&
+                                <p className="text-green-600 text-center font-bold">{message}</p>
+                            }
+
+                            {
+                                (
+                                    message === "Not a registered user!" ||
+                                    message === "User already exists!" ||
+                                    message === "Registration failed. Try again!" ||
+                                    message === "Login failed, Try again!"
+                                ) &&
+                                <p className="text-red-600 text-center font-bold">{message}</p>}
 
                             {isSignUp &&
                                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
@@ -135,6 +153,7 @@ export default function Login() {
                                         setFullName("");
                                         setEmail("");
                                         setPassword("");
+                                        setMessage("");
                                     }}>Sign up</a>
                                 </p>
                             }
@@ -145,6 +164,7 @@ export default function Login() {
                                         setFullName("");
                                         setEmail("");
                                         setPassword("");
+                                        setMessage("");
                                     }}>Login here!</a>
                                 </p>
                             }
@@ -152,6 +172,6 @@ export default function Login() {
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
     );
 }
