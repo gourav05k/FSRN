@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Body from "./Body";
 import logo from '../img/logo1.png'
 
 export default function Login() {
@@ -21,7 +20,7 @@ export default function Login() {
     function register() {
         console.log("registered");
         // call API using fetch. check for the url defined in user route
-        fetch("http://localhost:5100/api/register",
+        fetch("https://webapis-6ao0.onrender.com/api/v1/register",
             {
                 method: "POST",
                 headers: {
@@ -52,7 +51,7 @@ export default function Login() {
     // fetch the response from the login API and use the token stored in session storage.
     function login() {
         console.log("login process started");
-        fetch("http://localhost:5100/api/login",
+        fetch("https://webapis-6ao0.onrender.com/api/v1/login",
             {
                 method: "POST",
                 headers: {
@@ -127,7 +126,7 @@ export default function Login() {
                                 {!isSignUp ? "Register" : "Login"}
                             </button>
 
-                            {errorMessage && <p className="text-red-600 text-center font-bold">{errorMessage}</p>}
+                            {errorMessage && <p className="text-red-600 text-center font-bold">Not a registered user</p>}
 
                             {isSignUp &&
                                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
