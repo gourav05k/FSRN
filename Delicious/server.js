@@ -1,9 +1,9 @@
 import express from "express";
 import mongoose from "mongoose";
-import { routes } from './routes/restaurants.routes.js'
-import { userRoutes } from "./routes/users.routes.js";
+import { routes } from './NodeJS/routes/restaurants.routes.js'
+import { userRoutes } from "./NodeJS/routes/users.routes.js";
 import cors from "cors";
-import { menuRoutes } from "./routes/restaurantMenu.routes.js";
+import { menuRoutes } from "./NodeJS/routes/restaurantMenu.routes.js";
 import dotenv from 'dotenv';
 
 
