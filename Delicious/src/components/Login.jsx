@@ -42,7 +42,7 @@ export default function Login() {
                     setMessage("Registered successfully!");
                 } else {
                     console.error("Registration failed: ", data.message);
-                    setMessage("User already exists!");
+                    setMessage(data.message);
                 }
             })
             .catch(err => {
@@ -73,7 +73,7 @@ export default function Login() {
                     window.location.href = "/"; // Redirect to the main page
                 } else {
                     console.log("Login failed:", data.message);
-                    setMessage("Not a registered user!");
+                    setMessage(data.message);
                 }
             }).catch(err => {
                 console.log("error: ", err.message);
@@ -133,17 +133,10 @@ export default function Login() {
                                 (
                                     message === "Login successful!" ||
                                     message === "Registered successfully!"
-                                ) &&
+                                )
+                                ? 
                                 <p className="text-green-600 text-center font-bold">{message}</p>
-                            }
-
-                            {
-                                (
-                                    message === "Not a registered user!" ||
-                                    message === "User already exists!" ||
-                                    message === "Registration failed. Try again!" ||
-                                    message === "Login failed, Try again!"
-                                ) &&
+                                :
                                 <p className="text-red-600 text-center font-bold">{message}</p>}
 
                             {isSignUp &&
