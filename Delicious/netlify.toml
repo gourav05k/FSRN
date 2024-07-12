@@ -1,6 +1,7 @@
 [build]
   command = "npm run build"
   publish = "dist"
-  environment = { 
-    NODE_VERSION = "20.10.0"
-  }
+  base = "./Delicious"
+
+[build.environment]
+  NODE_VERSION = "20.10.0"
