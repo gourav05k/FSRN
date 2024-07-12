@@ -23,6 +23,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-/node_modules
-/package-lock.json
-/NodeJs/.env
+./node_modules
+.package-lock.json
