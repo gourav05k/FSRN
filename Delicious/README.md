@@ -1,8 +1,14 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+#Delicious: Responsive Food delivery Application. 
+------------------------------------------------- 
+Components are Built using React in the Front-end,
+Node.JS is used in the Back-End, 
+Rest APIs are devveloped using Express and Node.js,
+Used MongoDB to store Database of users, restaurants and restaurant menu items,
+Redux used for cart state management,
+Content is written using HTML,
+Tailwaind CSS is providing a responsive style to the application. 
+#Try it here: https://delicious-bites.netlify.app/
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+--------------------------------------------------
